@@ -1,3 +1,5 @@
+// Caroussel modèles
+
 function slideVoiture(side) {
 
     if (side =='left') {
