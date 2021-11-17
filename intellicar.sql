@@ -1,4 +1,4 @@
-\c transvar
+\c intellicar
 
 -- Suppression de la base existante
 
