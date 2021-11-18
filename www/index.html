@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Modeles">Modeles</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Reservation</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#reservation">Reservation</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
                     </ul>
@@ -65,62 +65,172 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Modeles Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Modeles Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="Modeles-item mx-auto" data-bs-toggle="modal" data-bs-target="#ModelesModal1">
-                            <div class="Modeles-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="Modeles-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/Modeles/car1.png"/>
-                        </div>
+                <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+                    <!--Controls-->
+                    <div class="controls-top">
+                      <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+                      <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
                     </div>
-                    <!-- Modeles Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="Modeles-item mx-auto" data-bs-toggle="modal" data-bs-target="#ModelesModal2">
-                            <div class="Modeles-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="Modeles-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    <!--/.Controls-->
+                
+                    <!--Indicators-->
+                    <ol class="carousel-indicators">
+                      <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+                      <li data-target="#multi-item-example" data-slide-to="1"></li>
+                      <li data-target="#multi-item-example" data-slide-to="2"></li>
+                    </ol>
+                    <!--/.Indicators-->
+                
+                    <!--Slides-->
+                    <div class="carousel-inner" role="listbox">
+                
+                      <!--First slide-->
+                      <div class="carousel-item active">
+                
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="card mb-2">
+                              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                                   alt="Card image cap">
+                              <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                  card's content.</p>
+                                <a class="btn btn-primary">Button</a>
+                              </div>
                             </div>
-                            <img class="img-fluid" src="assets/img/Modeles/car2.png"/>
-                        </div>
-                    </div>
-                    <!-- Modeles Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="Modeles-item mx-auto" data-bs-toggle="modal" data-bs-target="#ModelesModal3">
-                            <div class="Modeles-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="Modeles-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                          </div>
+                
+                          <div class="col-md-4 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                                   alt="Card image cap">
+                              <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                  card's content.</p>
+                                <a class="btn btn-primary">Button</a>
+                              </div>
                             </div>
-                            <img class="img-fluid" src="assets/img/Modeles/car3.png"/>
-                        </div>
-                    </div>
-                    <!-- Modeles Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                        <div class="Modeles-item mx-auto" data-bs-toggle="modal" data-bs-target="#ModelesModal4">
-                            <div class="Modeles-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="Modeles-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                          </div>
+                
+                          <div class="col-md-4 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
+                                   alt="Card image cap">
+                              <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                  card's content.</p>
+                                <a class="btn btn-primary">Button</a>
+                              </div>
                             </div>
-                            <img class="img-fluid" src="assets/img/Modeles/car4.png"/>
+                          </div>
                         </div>
-                    </div>
-                    <!-- Modeles Item 5-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                        <div class="Modeles-item mx-auto" data-bs-toggle="modal" data-bs-target="#ModelesModal5">
-                            <div class="Modeles-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="Modeles-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                
+                      </div>
+                      <!--/.First slide-->
+                
+                      <!--Second slide-->
+                      <div class="carousel-item">
+                
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="card mb-2">
+                              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                                   alt="Card image cap">
+                              <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                  card's content.</p>
+                                <a class="btn btn-primary">Button</a>
+                              </div>
                             </div>
-                            <img class="img-fluid" src="assets/img/Modeles/car5.png"/>
-                        </div>
-                    </div>
-                    <!-- Modeles Item 6-->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="Modeles-item mx-auto" data-bs-toggle="modal" data-bs-target="#ModelesModal6">
-                            <div class="Modeles-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="Modeles-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                          </div>
+                
+                          <div class="col-md-4 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
+                                   alt="Card image cap">
+                              <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                  card's content.</p>
+                                <a class="btn btn-primary">Button</a>
+                              </div>
                             </div>
-                            <img class="img-fluid" src="assets/img/Modeles/car6.png"/>
+                          </div>
+                
+                          <div class="col-md-4 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                              <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
+                                   alt="Card image cap">
+                              <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                  card's content.</p>
+                                <a class="btn btn-primary">Button</a>
+                              </div>
+                            </div>
+                          </div>
                         </div>
+                
+                      </div>
+                      <!--/.Second slide-->
+                
+                      <!--Third slide-->
+                      <div class="carousel-item">
+                
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="card mb-2">
+                              <img class="card-img-top" src="assets/img/Modeles/car1.png"
+                                   alt="Card image cap">
+                              <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                  card's content.</p>
+                                <a class="btn btn-primary">Button</a>
+                              </div>
+                            </div>
+                          </div>
+                
+                          <div class="col-md-4 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                              <img class="card-img-top" src="assets/img/Modeles/car2.png"
+                                   alt="Card image cap">
+                              <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                  card's content.</p>
+                                <a class="btn btn-primary">Button</a>
+                              </div>
+                            </div>
+                          </div>
+                
+                          <div class="col-md-4 clearfix d-none d-md-block">
+                            <div class="card mb-2">
+                              <img class="card-img-top" src="assets/img/Modeles/car3.png"
+                                   alt="Card image cap">
+                              <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                  card's content.</p>
+                                <a class="btn btn-primary">Button</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                
+                      </div>
+                      <!--/.Third slide-->
+                
                     </div>
-                </div>
+                    <!--/.Slides-->
+                
+                  </div>
+                  <!--/.Carousel Wrapper-->
             </div>
         </section>
         <!-- Reservation Section-->
@@ -166,9 +276,14 @@
                             </form>
                             <!-- Price input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">Numéro de téléphone</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">Numéro de téléphone requis.</div>
+                                <input class="form-control" id="pricemin" type="pricemin" placeholder="2000€" data-sb-validations="required" />
+                                <label for="phone">Prix minimum</label>
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">Prix minimal requis.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="princemax" type="princemax" placeholder="55000€" data-sb-validations="required" />
+                                <label for="phone">Prix maximum</label>
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">Prix maximal requis.</div>
                             </div>
                             <!-- Motor input-->
                             <!-- <h1 style="font-family:var(--bs-body-font-family);">Motorisation</h1> -->
