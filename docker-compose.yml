@@ -15,13 +15,13 @@ services:
         volumes:
             - pg-data-bdd:/var/log/postgresql
             - pg-data-bdd:/var/lib/postgresql/data
-            - ./transvar.sql:/docker-entrypoint-initdb.d/intellicar.sql
+            - ./IntelliCar.sql:/docker-entrypoint-initdb.d/IntelliCar.sql
         ports:
             - 5432:5432
         environment:
             - POSTGRES_PASSWORD=root
             - POSTGRES_USER=postgres
-            - POSTGRES_DB=intellicar
+            - POSTGRES_DB=IntelliCar
             
     pgadmin:
         container_name: pgadmin
@@ -29,7 +29,7 @@ services:
         environment:
             PGADMIN_DEFAULT_EMAIL: user@domain.com
             PGADMIN_DEFAULT_PASSWORD: root
-            PG_DATABASE: transvar
+            PG_DATABASE: IntelliCar
             PG_USER: postgres
             PG_PASSWORD: root
         volumes:
