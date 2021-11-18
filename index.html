@@ -28,8 +28,8 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#Modeles">Modeles</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Reservation</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -118,6 +118,72 @@
                             </div>
                             <img class="img-fluid" src="assets/img/Modeles/car6.png"/>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Reservation Section-->
+        <section class="page-section" id="reservation">
+            <div class="container">
+                <!-- Contact Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Reservez ici!</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Reservation Section Form-->
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-xl-7">
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                            <!-- Marque input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="text" placeholder="Peugeot" data-sb-validations="required" />
+                                <label for="name">Marque du véhicule</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">Marque requise.</div>
+                            </div>
+                            <!-- Modele input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="text" placeholder="208" data-sb-validations="required" />
+                                <label for="email">Modele</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">Modele requis.</div>
+                            </div>
+                            <!-- Options input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                <label for="phone">Numéro de téléphone</label>
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">Numéro de téléphone requis.</div>
+                            </div>
+                            <!-- Price input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                <label for="phone">Numéro de téléphone</label>
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">Numéro de téléphone requis.</div>
+                            </div>
+                            <!-- Motor input-->
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <label for="message">Message</label>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">Message requis.</div>
+                            </div>
+                            <!-- Submit success message-->
+                            <!---->
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Contact établi!</div>
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <!---->
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur lors de l'evnoi du message!</div></div>
+                            <!-- Submit Button-->
+                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Envoyer</button>
+                        </form>
                     </div>
                 </div>
             </div>
