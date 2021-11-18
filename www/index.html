@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/motor.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -147,14 +148,22 @@
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="name" type="text" placeholder="208" data-sb-validations="required" />
                                 <label for="email">Modele</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">Modele requis.</div>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">Modele requis.</div><br>
                             </div>
                             <!-- Options input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">Numéro de téléphone</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">Numéro de téléphone requis.</div>
-                            </div>
+                            <h1 style="font-family:var(--bs-body-font-family);">Options du véhicule</h1>
+                            <form action="/action_page.php">
+                                <input type="checkbox" id="option1" name="option1"  value="Siege">
+                                <label for="option1" style="font-family:var(--bs-body-font-family);"> Siège chauffant</label><br><br>
+                                <input type="checkbox" id="option2" name="option2" value="Startnstop">
+                                <label for="option2" style="font-family:var(--bs-body-font-family);"> Start and Stop</label><br><br>
+                                <input type="checkbox" id="option3" name="option3" value="eclauto">
+                                <label for="option3" style="font-family:var(--bs-body-font-family);"> Eclairage automatique</label><br><br>
+                                <input type="checkbox" id="option4" name="option4" value="toitouvrant">
+                                <label for="option4" style="font-family:var(--bs-body-font-family);"> Toit ouvrant</label><br><br>
+                                <input type="checkbox" id="option5" name="option5" value="xenon">
+                                <label for="option5" style="font-family:var(--bs-body-font-family);"> Phare Xenon</label><br><br>
+                            </form>
                             <!-- Price input-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
@@ -162,10 +171,16 @@
                                 <div class="invalid-feedback" data-sb-feedback="phone:required">Numéro de téléphone requis.</div>
                             </div>
                             <!-- Motor input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                <label for="message">Message</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">Message requis.</div>
+                            <!-- <h1 style="font-family:var(--bs-body-font-family);">Motorisation</h1> -->
+                            <input type="radio" id="elec" name="motor">
+                            <input type="radio" id="therm" name="motor">
+                            <div>
+                                GET F<span>A<span>A</span><span>I</span></span>T 
+                                <!--<span>E<span>L<span>E<span>C<span>T<span><span>R</span><span>T<span>H<span>E<span>R<span>M<span></span>IQUE -->
+                            </div>
+                            <div>
+                                <label for="Electrique">⚡️</label>
+                                <label for="Thermique">💭</label>
                             </div>
                             <!-- Submit success message-->
                             <!---->
@@ -173,16 +188,17 @@
                             <!-- has successfully submitted-->
                             <div class="d-none" id="submitSuccessMessage">
                                 <div class="text-center mb-3">
-                                    <div class="fw-bolder">Contact établi!</div>
+                                    <div class="fw-bolder">Merci pour de votre demande !</div>
+                                    <p>&#128516;</p>
                                 </div>
                             </div>
                             <!-- Submit error message-->
                             <!---->
                             <!-- This is what your users will see when there is-->
                             <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur lors de l'evnoi du message!</div></div>
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur lors de l'envoi des données!</div></div>
                             <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Envoyer</button>
+                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Envoyer ma demande</button>
                         </form>
                     </div>
                 </div>
