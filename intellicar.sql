@@ -1,394 +1,195 @@
-\c intellicar
 
--- Suppression de la base existante
 
-DROP TABLE IF EXISTS Personne CASCADE;
-DROP TABLE IF EXISTS Abonnement CASCADE;
-DROP TABLE IF EXISTS Client CASCADE;
-DROP TABLE IF EXISTS Bus CASCADE;
-DROP TABLE IF EXISTS Conducteur CASCADE;
-DROP TABLE IF EXISTS Station CASCADE;
-DROP TABLE IF EXISTS Ligne CASCADE;
-DROP TABLE IF EXISTS StationLigne CASCADE;
-DROP TABLE IF EXISTS Parcours CASCADE;
+DROP TABLE IF EXISTS clients CASCADE;
+DROP TABLE IF EXISTS contrats CASCADE;
+DROP TABLE IF EXISTS factures CASCADE;
+DROP TABLE IF EXISTS types_contrat CASCADE;
+DROP TABLE IF EXISTS vehicules CASCADE;
+DROP TABLE IF EXISTS modeles CASCADE;
+DROP TABLE IF EXISTS options CASCADE;
+DROP TABLE IF EXISTS vehicule_option CASCADE;
 
--- Création de la structure de la base (tables)
 
-CREATE TABLE Personne (
-    id SERIAL PRIMARY KEY NOT NULL,
-    nom VARCHAR(50) NOT NULL,
-    prenom VARCHAR(50) NOT NULL,
-    ville VARCHAR(50) NOT NULL,
-    codePostal VARCHAR(5) NOT NULL
+CREATE TABLE clients (
+    c_id SERIAL PRIMARY KEY NOT NULL,
+    c_nom VARCHAR(50) NOT NULL,
+    c_prenom VARCHAR(50) NOT NULL,
+    c_telephone VARCHAR(10) NOT NULL,
+    c_mail VARCHAR(100) NOT NULL,
+    c_adresse VARCHAR(150) NOT NULL,
+    UNIQUE(c_mail)
 );
 
-CREATE TABLE Abonnement (
-    id SERIAL PRIMARY KEY NOT NULL,
-    intitule VARCHAR(50) NOT NULL,
-    tarif integer NOT NULL,
-    ageMin INTEGER NOT NULL,
-    ageMax INTEGER NOT NULL,
-    dureeValidite INTEGER NOT NULL,
-    CHECK (dureeValidite > 0)
+CREATE TABLE modeles (
+    m_id SERIAL PRIMARY KEY NOT NULL,
+    m_marque VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Client (
-    id SERIAL PRIMARY KEY NOT NULL,
-    dateNaissance DATE NOT NULL,
-    idAbonnement INTEGER NOT NULL,
-    idPersonne INTEGER NOT NULL,
-    FOREIGN KEY (idAbonnement)
-        REFERENCES Abonnement (id),
-    FOREIGN KEY (idPersonne)
-        REFERENCES Personne (id)
-            ON DELETE CASCADE
+
+CREATE TABLE vehicules (
+    v_immatriculation VARCHAR(9) PRIMARY KEY NOT NULL,
+    m_id SERIAL NOT NULL,
+    FOREIGN KEY (m_id)
+        REFERENCES modeles (m_id)
+
 );
 
-CREATE TABLE Bus (
-    id SERIAL PRIMARY KEY NOT NULL,
-    marque VARCHAR(50) NOT NULL,
-    immatriculation VARCHAR(50) NOT NULL,
-    nbPlaces INTEGER NOT NULL,
-    idConducteur INTEGER,
-    CHECK (nbPlaces > 0)
+CREATE TABLE types_contrat (
+    tc_id SERIAL PRIMARY KEY NOT NULL,
+    tc_nom varchar(45) NOT NULL
+
 );
 
-CREATE TABLE Conducteur (
-    id SERIAL PRIMARY KEY NOT NULL,
-    salaire REAL NOT NULL,
-    dateEmbauche DATE NOT NULL,
-    idBus INTEGER,
-    idPersonne INTEGER NOT NULL,
-    FOREIGN KEY (idBus)
-        REFERENCES Bus (id),
-    FOREIGN KEY (idPersonne)
-        REFERENCES Personne (id)
-            ON DELETE CASCADE,
-    CHECK (salaire >= 1539.42)
+
+CREATE TABLE contrats (
+    co_id SERIAL PRIMARY KEY NOT NULL,
+    co_date DATE NOT NULL,
+    tc_id SERIAL NOT NULL,
+    co_duree DATE NOT NULL,
+    c_id SERIAL NOT NULL,
+    v_immatriculation VARCHAR(9) NOT NULL,
+    FOREIGN KEY (c_id)
+        REFERENCES clients (c_id),
+    FOREIGN KEY (v_immatriculation)
+        REFERENCES vehicules (v_immatriculation),
+    FOREIGN KEY (tc_id)
+        REFERENCES types_contrat (tc_id)
+
 );
 
-ALTER TABLE Bus ADD CONSTRAINT fk_bus_conducteur FOREIGN KEY (idConducteur) REFERENCES Conducteur (id) MATCH FULL;
+CREATE TABLE factures (
+    f_id SERIAL PRIMARY KEY NOT NULL,
+    f_montant INT NOT NULL,
+    co_id SERIAL NOT NULL,
+    FOREIGN KEY (co_id)
+        REFERENCES contrats (co_id)
 
-CREATE TABLE Station (
-    id SERIAL PRIMARY KEY NOT NULL,
-    nom VARCHAR(50) NOT NULL,
-    geolocalisation VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Ligne (
-    id SERIAL PRIMARY KEY NOT NULL,
-    numero VARCHAR(5) NOT NULL,
-    stationDepart INTEGER NOT NULL,
-    stationTerminus INTEGER NOT NULL,
-    nbKilometres INTEGER NOT NULL,
-    dureeTotale INTEGER NOT NULL,
-    FOREIGN KEY (stationDepart)
-        REFERENCES Station (id),
-    FOREIGN KEY (stationTerminus)
-        REFERENCES Station (id),
-    CHECK (nbKilometres > 0),
-    CHECK (dureeTotale > 0)
+CREATE TABLE options (
+    o_id SERIAL PRIMARY KEY NOT NULL,
+    o_cle VARCHAR(50) NOT NULL,
+    o_valeur VARCHAR(50) NOT NULL,
+    o_type INT NOT NULL
 );
 
-CREATE TABLE StationLigne (
-    idLigne INTEGER NOT NULL,
-    idStation INTEGER NOT NULL,
-    PRIMARY KEY (idLigne, idStation),
-    FOREIGN KEY (idLigne)
-        REFERENCES LIGNE (id)
-        ON DELETE CASCADE,
-    FOREIGN KEY (idStation)
-        REFERENCES STATION (id)
-        ON DELETE CASCADE
+CREATE TABLE vehicule_option (
+    o_id SERIAL NOT NULL,
+    v_immatriculation VARCHAR(9) NOT NULL,
+    FOREIGN KEY (v_immatriculation)
+        REFERENCES vehicules (v_immatriculation),
+    FOREIGN KEY (o_id)
+        REFERENCES options (o_id)
+
+
 );
 
-CREATE TABLE Parcours (
-    id SERIAL PRIMARY KEY NOT NULL,
-    depart DATE NOT NULL,
-    idConducteur INTEGER NOT NULL,
-    idLigne INTEGER NOT NULL,
-    FOREIGN KEY (idConducteur)
-        REFERENCES Conducteur (id)
-        ON DELETE CASCADE,
-    FOREIGN KEY (idLigne)
-        REFERENCES Ligne (id)
-        ON DELETE CASCADE
-);
+-- insertion de données dans la table clients
 
--- Création des fonctions et des vues
+INSERT INTO clients (c_id, c_nom, c_prenom, c_telephone, c_mail, c_adresse) VALUES (1,'DUPONT','PIERRE','0328010101','pierre.dupont@wanadoo.fr','15 Route des université');
+INSERT INTO clients (c_id, c_nom, c_prenom, c_telephone, c_mail, c_adresse) VALUES (2,'DURAND','Jeannine','0328010102','jeannine.durand2@orange.fr','32 Route de toulon');
+INSERT INTO clients (c_id, c_nom, c_prenom, c_telephone, c_mail, c_adresse) VALUES (3,'BISMUTH','PAUL','0328010103','paul.bismuth@gmail.fr','32 Route des cretes');
+INSERT INTO clients (c_id, c_nom, c_prenom, c_telephone, c_mail, c_adresse) VALUES (4,'BERTHIER','CORRINE','0328010104','poney59@hotmail.fr','32 route des tests');
+INSERT INTO clients (c_id, c_nom, c_prenom, c_telephone, c_mail, c_adresse) VALUES (5,'DUVIVIER','Jean Marie','0328010105','heyyyy@test.fr','32 route de la reunion');
+INSERT INTO clients (c_id, c_nom, c_prenom, c_telephone, c_mail, c_adresse) VALUES (6,'TESTON','Claudette','0328010106','clocloxxx@outlook.fr','32 route des examens');
 
-CREATE OR REPLACE PROCEDURAL LANGUAGE plpgsql;
+-- insertion de données dans la table modeles
 
-CREATE OR REPLACE FUNCTION Station_par_ligne(idLigneSearch INTEGER)
-RETURNS SETOF INTEGER
-LANGUAGE plpgsql
-AS $$
-    DECLARE
-        station INTEGER;
-    BEGIN
-        FOR station IN SELECT idStation FROM StationLigne WHERE idLigne = idLigneSearch
-            LOOP
-                RETURN NEXT station;
-            END LOOP;
-    END;
-$$;
-
-CREATE OR REPLACE FUNCTION Ligne_par_Station(idStationSearch INTEGER)
-RETURNS SETOF INTEGER
-LANGUAGE plpgsql
-AS $$
-    DECLARE
-        ligne INTEGER;
-    BEGIN
-        FOR ligne IN SELECT idLigne FROM StationLigne WHERE idStation = idStationSearch
-            LOOP
-                RETURN NEXT ligne;
-            END LOOP;
-    END;
-$$;
-
-CREATE OR REPLACE FUNCTION Bus_non_affecte()
-    RETURNS SETOF INTEGER
-    LANGUAGE plpgsql
-AS $$
-DECLARE
-    bus INTEGER;
-BEGIN
-    FOR bus IN SELECT id FROM Bus WHERE idconducteur IS NULL
-        LOOP
-            RETURN NEXT bus;
-        END LOOP;
-END;
-$$;
-
-CREATE OR REPLACE FUNCTION Nombre_parcours_ligne_entre(dateDebutSearch DATE, dateFinSearch DATE, idLigneSearch INTEGER)
-RETURNS INTEGER
-LANGUAGE plpgsql
-AS $$
-    DECLARE
-        nbParcours INTEGER;
-    BEGIN
-        SELECT COUNT(*) INTO nbParcours
-        FROM Parcours
-        WHERE idLigne = idLigneSearch AND depart BETWEEN dateDebutSearch AND dateFinSearch;
-
-        RETURN nbParcours;
-    END;
-$$;
-
--- Création des fonctions pour triggers
-
-CREATE OR REPLACE FUNCTION Affectation_bus_update()
-RETURNS TRIGGER
-LANGUAGE plpgsql
-AS
-$$
-    DECLARE
-        idBusDisp INTEGER;
-    BEGIN
-        SELECT id INTO idBusDisp
-        FROM Bus
-        WHERE idConducteur IS NULL
-        LIMIT 1;
-
-        RAISE NOTICE '%', idBusDisp;
-
-        IF idBusDisp IS NOT NULL THEN
-            UPDATE Conducteur SET idBus = idBusDisp WHERE id = NEW.id;
-            UPDATE Bus SET idConducteur = NEW.id WHERE id = idBusDisp;
-        END IF;
-
-        RETURN NEW;
-    END
-$$;
-
-CREATE OR REPLACE FUNCTION Age_verification_abonnement_client()
-RETURNS TRIGGER
-LANGUAGE plpgsql
-AS
-$$
-    DECLARE
-        age_client INTEGER;
-        date_naissance_client DATE;
-        age_min_abonnement INTEGER;
-        age_max_abonnement INTEGER;
-    BEGIN
-        IF tg_op = 'UPDATE' THEN
-            SELECT dateNaissance INTO date_naissance_client
-            FROM Client
-            WHERE id = NEW.id;
-        ELSE
-            date_naissance_client = NEW.datenaissance;
-        END IF;
-
-        SELECT agemin, ageMax
-        INTO age_min_abonnement, age_max_abonnement
-        FROM Abonnement
-        WHERE id = NEW.idabonnement;
-
-        age_client = (current_date - date_naissance_client) / 365;
-
-        IF(age_client NOT BETWEEN age_min_abonnement AND age_max_abonnement) THEN
-            RAISE EXCEPTION 'L"abonnement n"est pas valide pour cette tranche d"age';
-        END IF;
-
-        RAISE NOTICE 'OK';
-
-        RETURN NEW;
-    END
-$$;
-
-CREATE OR REPLACE FUNCTION Suppression_Bus_Conducteur()
-    RETURNS TRIGGER
-    LANGUAGE plpgsql
-AS
-$$
-DECLARE
-    conducteurLie INTEGER;
-BEGIN
-    SELECT id INTO conducteurLie
-    FROM Conducteur
-    WHERE idBus = OLD.id;
-
-    IF conducteurLie IS NOT NULL THEN
-        UPDATE Conducteur SET idBus = NULL WHERE id = conducteurLie;
-    END IF;
-
-    RETURN OLD;
-END
-$$;
-
-CREATE OR REPLACE FUNCTION Suppression_Conducteur_Bus()
-    RETURNS TRIGGER
-    LANGUAGE plpgsql
-AS
-$$
-DECLARE
-    busLie INTEGER;
-BEGIN
-    SELECT id INTO busLie
-    FROM Bus
-    WHERE idConducteur = OLD.id;
-
-    IF busLie IS NOT NULL THEN
-        UPDATE Bus SET idConducteur = NULL WHERE id = busLie;
-    END IF;
-
-    RETURN OLD;
-END
-$$;
-
-CREATE OR REPLACE FUNCTION MAJ_Conducteur_Bus()
-    RETURNS TRIGGER
-    LANGUAGE plpgsql
-AS
-$$
-DECLARE
-    busLie INTEGER;
-BEGIN
-    SELECT id INTO busLie
-    FROM Bus
-    WHERE idConducteur = OLD.id;
-
-    IF busLie IS NOT NULL THEN
-        UPDATE Bus SET idConducteur = NULL WHERE id = busLie;
-        UPDATE Bus SET idConducteur = NEW.id WHERE id = NEW.idbus;
-    ELSE
-        UPDATE Bus SET idConducteur = NEW.id WHERE id = NEW.idbus;
-    END IF;
-
-    RETURN NEW;
-END
-$$;
-
-CREATE OR REPLACE FUNCTION Suppression_Station()
-    RETURNS TRIGGER
-    LANGUAGE plpgsql
-AS
-$$
-DECLARE
-    ligneLie INTEGER;
-    numeroLigne INTEGER;
-BEGIN
-    SELECT id, numero INTO ligneLie, numeroLigne
-    FROM ligne
-    WHERE stationDepart = OLD.id OR stationTerminus = OLD.id;
+INSERT INTO modeles (m_id, m_marque) VALUES (1,'Renault');
+INSERT INTO modeles (m_id, m_marque) VALUES (2,'Peugeot');
+INSERT INTO modeles (m_id, m_marque) VALUES (3,'Citroen');
+INSERT INTO modeles (m_id, m_marque) VALUES (4,'Audi');
+INSERT INTO modeles (m_id, m_marque) VALUES (5,'Mercedes');
+INSERT INTO modeles (m_id, m_marque) VALUES (6,'BMW');
+INSERT INTO modeles (m_id, m_marque) VALUES (7,'Ferrari');
+INSERT INTO modeles (m_id, m_marque) VALUES (8,'Porshe');
+INSERT INTO modeles (m_id, m_marque) VALUES (9,'Rover');
+INSERT INTO modeles (m_id, m_marque) VALUES (10,'Fiat');
+INSERT INTO modeles (m_id, m_marque) VALUES (11,'Hyundai');
+INSERT INTO modeles (m_id, m_marque) VALUES (12,'Kia');
 
 
-    IF ligneLie IS NOT NULL THEN
-        RAISE EXCEPTION 'Cette station est toujours affectée en tant que départ ou terminus à la ligne %. Veuillez effectuer les modifications nécessaires avant de la supprimer.', numeroLigne;
-    END IF;
 
-    RETURN OLD;
-END
-$$;
+-- insertion de données dans la table vehicules
 
--- Création des triggers
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('ab-123-al',7);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('ac-123-al',7);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-aa',1);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-ab',1);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-ac',2);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-ad',2);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-ae',3);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-af',3);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-ag',4);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-ah',4);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-ai',5);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-aj',5);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-ak',6);
+INSERT INTO vehicules (v_immatriculation, m_id) VALUES ('aa-123-al',6);
 
-CREATE TRIGGER Affectation_bus_trigger
-    AFTER INSERT ON Conducteur
-    FOR EACH ROW
-    EXECUTE FUNCTION Affectation_bus_update();
+-- insertion de données dans la table types_contrat
 
-CREATE TRIGGER Age_verification_abonnement_client_trigger
-    BEFORE INSERT OR UPDATE ON Client
-    FOR EACH ROW
-    EXECUTE FUNCTION Age_verification_abonnement_client();
+INSERT INTO types_contrat(tc_id, tc_nom) VALUES (1,'LOCATION'),(2,'VENTE');
 
-CREATE TRIGGER Suppression_Bus_Conducteur_trigger
-    BEFORE DELETE ON Bus
-    FOR EACH ROW
-    EXECUTE FUNCTION Suppression_Bus_Conducteur();
 
-CREATE TRIGGER Suppression_Conducteur_Bus_trigger
-    BEFORE DELETE ON Conducteur
-    FOR EACH ROW
-    EXECUTE FUNCTION Suppression_Conducteur_Bus();
+-- insertion de données dans la table contrats
 
-CREATE TRIGGER MAJ_Conducteur_Bus_trigger
-    BEFORE UPDATE ON Conducteur
-    FOR EACH ROW
-    EXECUTE FUNCTION MAJ_Conducteur_Bus();
+INSERT INTO contrats (co_id, co_date, tc_id, co_duree, c_id, v_immatriculation) VALUES (1,'2021-11-22',1,'2025-11-22',2,'aa-123-ab');
+INSERT INTO contrats (co_id, co_date, tc_id, co_duree, c_id, v_immatriculation) VALUES (2,'2021-11-22',2,'2024-11-22',3,'aa-123-ac');
+INSERT INTO contrats (co_id, co_date, tc_id, co_duree, c_id, v_immatriculation) VALUES (3,'2021-11-22',2,'2022-11-23',4,'aa-123-ad');
+INSERT INTO contrats (co_id, co_date, tc_id, co_duree, c_id, v_immatriculation) VALUES (4,'2021-11-22',1,'2022-11-22',5,'aa-123-ae');
+INSERT INTO contrats (co_id, co_date, tc_id, co_duree, c_id, v_immatriculation) VALUES (5,'2021-11-22',1,'2022-11-22',1,'aa-123-aa');
 
-CREATE TRIGGER Suppression_Station_trigger
-    BEFORE DELETE ON Station
-    FOR EACH ROW
-    EXECUTE FUNCTION Suppression_Station();
+-- insertion de données dans la table factures
 
--- Insertion de données de test et validation du fonctionnement de la base
+INSERT INTO factures (f_id, f_montant, co_id) VALUES (1,500,1);
+INSERT INTO factures (f_id, f_montant, co_id) VALUES (2,120,1);
+INSERT INTO factures (f_id, f_montant, co_id) VALUES (3,120,1);
+INSERT INTO factures (f_id, f_montant, co_id) VALUES (4,5000,2);
+INSERT INTO factures (f_id, f_montant, co_id) VALUES (5,10000,3);
+INSERT INTO factures (f_id, f_montant, co_id) VALUES (6,500,4);
+INSERT INTO factures (f_id, f_montant, co_id) VALUES (7,50,4);
+INSERT INTO factures (f_id, f_montant, co_id) VALUES (8,50,4);
+INSERT INTO factures (f_id, f_montant, co_id) VALUES (9,600,5);
+INSERT INTO factures (f_id, f_montant, co_id) VALUES (10,150,5);
+INSERT INTO factures (f_id, f_montant, co_id) VALUES (11,150,5);
 
-INSERT INTO Abonnement(intitule, tarif, ageMin, ageMax, dureeValidite) VALUES ('JEUNE', 20, 0, 25, 365);
-INSERT INTO Abonnement(intitule, tarif, ageMin, ageMax, dureeValidite) VALUES ('ADULTE', 50, 26, 50, 365);
+-- insertion de données dans la table options
 
-INSERT INTO Personne(nom, prenom, ville, codePostal) VALUES ('DUPONT', 'Rémi', 'La Garde', '83130');
-INSERT INTO Personne(nom, prenom, ville, codePostal) VALUES ('MARTIN', 'Charles', 'Toulon', '83000');
-INSERT INTO Personne(nom, prenom, ville, codePostal) VALUES ('VUITON', 'Ludovic', 'Le Pradet', '83130');
-INSERT INTO Personne(nom, prenom, ville, codePostal) VALUES ('DUPONT', 'Charles', 'Toulon', '83000');
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (1,'BOITE','MANUELLE',1);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (2,'BOITE','AUTOMATIQUE',1);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (3,'MOTORISATION','110',0);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (4,'MOTORISATION','200',0);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (5,'MOTORISATION','50',0);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (6,'COULEUR','ROUGE',1);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (8,'COULEUR','BLEU',1);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (9,'COULEUR','JAUNE',1);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (10,'COULEUR','NOIR',1);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (11,'COULEUR','GRIS',1);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (12,'ENERGIE','DIESEL',1);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (13,'ENERGIE','ESSENCE',1);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (14,'ENERGIE','HYBRIDE',1);
+INSERT INTO options(o_id, o_cle, o_valeur, o_type) VALUES (15,'ENERGIE','ELECTRIQUE',1);
 
-INSERT INTO Bus(marque, immatriculation, nbPlaces, idConducteur) VALUES ('MERCEDES', 'CB-907-D5', 50, NULL);
-INSERT INTO Bus(marque, immatriculation, nbPlaces, idConducteur) VALUES ('RENAULT', 'CB-237-D5', 100, NULL);
+-- insertion de données dans la table vehicule_option
 
-INSERT INTO Conducteur(salaire, dateEmbauche, idBus, idPersonne) VALUES (1600.0, '2001-09-28 01:00:00', NULL, 1);
-INSERT INTO Conducteur(salaire, dateEmbauche, idBus, idPersonne) VALUES (1700.0, '2001-08-28 01:00:00', NULL, 2);
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (1,'aa-123-aa');
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (3,'aa-123-aa');
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (6,'aa-123-aa');
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (13,'aa-123-aa');
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (1,'aa-123-ab');
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (13,'aa-123-ab');
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (8,'aa-123-ab');
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (3,'aa-123-ab');
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (1,'aa-123-ac');
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (5,'aa-123-ac');
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (9,'aa-123-ac');
+INSERT INTO vehicule_option(o_id, v_immatriculation) VALUES (15,'aa-123-ac');
 
---UPDATE Conducteur SET idBus = 2 WHERE id = 1;
---UPDATE Conducteur SET idBus = 1 WHERE id = 2;
 
-INSERT INTO Client(dateNaissance, idAbonnement, idPersonne) VALUES ('1980-08-02', 2, 3);
-INSERT INTO Client(dateNaissance, idAbonnement, idPersonne) VALUES ('1970-08-02', 2, 4);
+-- requete de selection des options d'un vehicule donné
 
-INSERT INTO Station (nom, geolocalisation) VALUES ('COUPIANE', '43.13181237900592');
-INSERT INTO Station (nom, geolocalisation) VALUES ('BEAUCAIRE', '5.9778850585937615');
-INSERT INTO Station (nom, geolocalisation) VALUES ('REVEST', '43.131815675592');
-INSERT INTO Station (nom, geolocalisation) VALUES ('RIPELLE', '5.565785937615');
-
-INSERT INTO Ligne (numero, stationDepart, stationTerminus, nbKilometres, dureeTotale) VALUES (55, 1, 2, 27, 75);
-INSERT INTO Ligne (numero, stationDepart, stationTerminus, nbKilometres, dureeTotale) VALUES (11, 3, 4, 12, 27);
-
-INSERT INTO StationLigne(idLigne, idStation) VALUES (1, 1);
-INSERT INTO StationLigne(idLigne, idStation) VALUES (1, 2);
-INSERT INTO StationLigne(idLigne, idStation) VALUES (2, 1);
-INSERT INTO StationLigne(idLigne, idStation) VALUES (2, 2);
-
-INSERT INTO Parcours (depart, idConducteur, idLigne) VALUES ('2020-11-19 21:52:00', 1, 1);
-INSERT INTO Parcours (depart, idConducteur, idLigne) VALUES ('2020-11-19 22:52:00', 2, 1);
+SELECT o_cle, o_valeur,o_type FROM options
+LEFT JOIN vehicule_option ON vehicule_option.o_id = options.o_id
+LEFT JOIN vehicules ON vehicules.v_immatriculation = vehicule_option.v_immatriculation
+WHERE vehicules.v_immatriculation = 'aa-123-aa';
