@@ -72,22 +72,21 @@
                     <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
                         <!--Controls-->
                         <div class="controls-top" style="text-align:center">
-                            <a class="btn-floating" href="#multi-item-example" onclick="slide('left')" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-                            <a class="btn-floating" href="#multi-item-example" onclick="slide('right')" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+                            <a class="btn-floating" onclick="slide('left')" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+                            <a class="btn-floating" onclick="slide('right')" data-slide="next"><i class="fa fa-chevron-right"></i></a>
                         </div>
                         <!--/.Controls-->
                         <!--Indicators-->
                         <ol class="carousel-indicators">
-                            <li id="boule-1" data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                            <li id="boule-2" data-target="#multi-item-example" data-slide-to="1"></li>
-                            <li id="boule-3" data-target="#multi-item-example" data-slide-to="2"></li>
+                            <li id="boule-1" class="caca cacaEnAvant" data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+                            <li id="boule-2" class="caca" data-target="#multi-item-example" data-slide-to="1"></li>
+                            <li id="boule-3" class="caca" data-target="#multi-item-example" data-slide-to="2"></li>
                         </ol>
                         <!--/.Indicators-->
                     
                         <!--Slides-->
                         <div class="carousel-inner" role="listbox">
 
-                            
                         <!--First slide-->
                         <div id="slide-1" class="carousel-item active">
                             <div class="row">
@@ -275,12 +274,11 @@
                                 <div class="invalid-feedback" data-sb-feedback="phone:required">Prix minimal requis.</div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="princemax" type="princemax" placeholder="55000€" data-sb-validations="required" />
+                                <input class="form-control" id="princemax" type="princemax" required placeholder="55000€" data-sb-validations="required" />
                                 <label for="phone">Prix maximum</label>
                                 <div class="invalid-feedback" data-sb-feedback="phone:required">Prix maximal requis.</div>
                             </div>
                             <!-- Motor input-->
-                            <!-- <h1 style="font-family:var(--bs-body-font-family);">Motorisation</h1> -->
                             <h1 style="font-family:var(--bs-body-font-family);">Motorisation :</h1>
                             <div>
                                 <input type="radio" id="elec" name="motor">
@@ -304,9 +302,9 @@
                             <!---->
                             <!-- This is what your users will see when there is-->
                             <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur lors de l'envoi des données!</div></div><br>
+                            <div class="d-none" id="reserveErrorMessage"><div class="text-center text-danger mb-3">Erreur lors de l'envoi des données!</div></div><br>
                             <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl disabled" id="reserveButton" type="submit">Envoyer ma demande</button>
+                            <button class="btn btn-primary btn-xl" id="reserveButton" type="submit">Envoyer ma demande de réservation</button>
                         </form>
                     </div>
                 </div>
@@ -354,13 +352,13 @@
                         <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                             <!-- Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <input class="form-control" id="name" type="text" placeholder="Entrez votre nom..." data-sb-validations="required" />
                                 <label for="name">Nom complet</label>
                                 <div class="invalid-feedback" data-sb-feedback="name:required">Nom requis.</div>
                             </div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <input class="form-control" id="email" type="email" placeholder="nom@exemple.com" data-sb-validations="required,email" />
                                 <label for="email">Email</label>
                                 <div class="invalid-feedback" data-sb-feedback="email:required">Email requis.</div>
                                 <div class="invalid-feedback" data-sb-feedback="email:email">Email non valide.</div>
@@ -392,7 +390,7 @@
                             <!-- an error submitting the form-->
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Erreur lors de l'evnoi du message!</div></div>
                             <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Envoyer</button>
+                            <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Envoyer</button>
                         </form>
                     </div>
                 </div>
