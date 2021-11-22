@@ -16,6 +16,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/motor.css" rel="stylesheet" />
+        <script src="js/carousel.js"></script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -69,34 +70,33 @@
                     <hr class="mb-5"/>
                     <!--Carousel Wrapper-->
                     <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-                    <!-- Modeles Grid Items-->
-                    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
                         <!--Controls-->
                         <div class="controls-top">
-                            <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-                            <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+                            <a class="btn-floating" href="#multi-item-example" onclick="slide('left')" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+                            <a class="btn-floating" href="#multi-item-example" onclick="slide('right')" data-slide="next"><i class="fa fa-chevron-right"></i></a>
                         </div>
                         <!--/.Controls-->
                         <!--Indicators-->
                         <ol class="carousel-indicators">
-                        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                        <li data-target="#multi-item-example" data-slide-to="1"></li>
-                        <li data-target="#multi-item-example" data-slide-to="2"></li>
+                            <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+                            <li data-target="#multi-item-example" data-slide-to="1"></li>
+                            <li data-target="#multi-item-example" data-slide-to="2"></li>
                         </ol>
                         <!--/.Indicators-->
                     
                         <!--Slides-->
                         <div class="carousel-inner" role="listbox">
-                    
+
+                            
                         <!--First slide-->
-                        <div class="carousel-item active">
+                        <div id="slide-1" class="carousel-item active">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="card mb-2">
-                                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                                    <img id="forced-card-img-top" class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
                                         alt="Card image cap">
                                         <div class="card-body">
-                                        <h4 class="card-title">Card title</h4>
+                                        <h4 class="card-title">Card 1</h4>
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                                         card's content.</p>
                                         <a class="btn btn-primary">Button</a>
@@ -105,7 +105,7 @@
                             </div>
                             <div class="col-md-4 clearfix d-none d-md-block">
                                 <div class="card mb-2">
-                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                                <img id="forced-card-img-top" class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -118,7 +118,7 @@
                     
                             <div class="col-md-4 clearfix d-none d-md-block">
                                 <div class="card mb-2">
-                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                                <img id="forced-card-img-top" class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -134,12 +134,25 @@
                         <!--/.First slide-->
                     
                         <!--Second slide-->
-                        <div class="carousel-item">
+                        <div id="slide-2" class="carousel-item">
                     
                             <div class="row">
                             <div class="col-md-4">
                                 <div class="card mb-2">
-                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                                <img id="forced-card-img-top" class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card 2</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                                </div>
+                            </div>
+                    
+                            <div class="col-md-4 clearfix d-none d-md-block">
+                                <div class="card mb-2">
+                                <img id="forced-card-img-top" class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -152,20 +165,7 @@
                     
                             <div class="col-md-4 clearfix d-none d-md-block">
                                 <div class="card mb-2">
-                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                                    alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
-                                </div>
-                                </div>
-                            </div>
-                    
-                            <div class="col-md-4 clearfix d-none d-md-block">
-                                <div class="card mb-2">
-                                <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
+                                <img id="forced-card-img-top" class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -181,11 +181,24 @@
                         <!--/.Second slide-->
                     
                         <!--Third slide-->
-                        <div class="carousel-item">
+                        <div id="slide-3" class="carousel-item">
                             <div class="row">
                             <div class="col-md-4">
                                 <div class="card mb-2">
-                                <img class="card-img-top" src="assets/img/Modeles/car1.png"
+                                <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car1.png"
+                                    alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Card 3</h4>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                    card's content.</p>
+                                    <a class="btn btn-primary">Button</a>
+                                </div>
+                                </div>
+                            </div>
+                    
+                            <div class="col-md-4 clearfix d-none d-md-block">
+                                <div class="card mb-2">
+                                <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car2.png"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -198,20 +211,7 @@
                     
                             <div class="col-md-4 clearfix d-none d-md-block">
                                 <div class="card mb-2">
-                                <img class="card-img-top" src="assets/img/Modeles/car2.png"
-                                    alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
-                                </div>
-                                </div>
-                            </div>
-                    
-                            <div class="col-md-4 clearfix d-none d-md-block">
-                                <div class="card mb-2">
-                                <img class="card-img-top" src="assets/img/Modeles/car3.png"
+                                <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car3.png"
                                     alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Card title</h4>
@@ -275,7 +275,10 @@
                                 <input type="checkbox" id="option5" name="option5" value="xenon">
                                 <label for="option5" style="font-family:var(--bs-body-font-family);"> Phare Xenon</label><br><br>
                             </form>
+
                             <!-- Price input-->
+                            <hr class="mt-5">
+                            <h1 style="font-family:var(--bs-body-font-family);">Echelle de prix :</h1>
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="pricemin" type="pricemin" placeholder="2000€" data-sb-validations="required" />
                                 <label for="phone">Prix minimum</label>
@@ -288,15 +291,14 @@
                             </div>
                             <!-- Motor input-->
                             <!-- <h1 style="font-family:var(--bs-body-font-family);">Motorisation</h1> -->
-                            <input type="radio" id="elec" name="motor">
-                            <input type="radio" id="therm" name="motor">
+                            <h1 style="font-family:var(--bs-body-font-family);">Motorisation :</h1>
                             <div>
-                                GET F<span>A<span>A</span><span>I</span></span>T 
-                                <!--<span>E<span>L<span>E<span>C<span>T<span><span>R</span><span>T<span>H<span>E<span>R<span>M<span></span>IQUE -->
+                                <input type="radio" id="elec" name="motor">
+                                <label for="elec">Electrique ⚡️</label><br>
                             </div>
                             <div>
-                                <label for="Electrique">⚡️</label>
-                                <label for="Thermique">💭</label>
+                                <input type="radio" id="therm" name="motor">
+                                <label for="therm">Thermique 💭</label><br>
                             </div>
                             <!-- Submit success message-->
                             <!---->

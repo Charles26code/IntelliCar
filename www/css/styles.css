@@ -64,7 +64,11 @@
     scroll-behavior: smooth;
   }
 }
-
+#forced-card-img-top{
+  width:max-content;
+  max-height:100px;
+  margin:auto;
+}
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);

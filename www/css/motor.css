@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
   height: 100%;
 }
 
@@ -74,5 +74,4 @@ body input#therm:checked ~ div + div label:first-child {
 body input#therm:checked ~ div + div label:last-child {
   -webkit-box-shadow: inset 0 0 0 4px #1597ff, 0 15px 15px -10px rgba(0, 125, 225, 0.375);
           box-shadow: inset 0 0 0 4px #1597ff, 0 15px 15px -10px rgba(0, 125, 225, 0.375);
-}
-/*# sourceMappingURL=motor.css.map */
+} */
