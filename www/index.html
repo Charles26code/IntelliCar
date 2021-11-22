@@ -17,6 +17,7 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/motor.css" rel="stylesheet" />
         <script src="js/carousel.js"></script>
+        <script src="js/indicator.js"></script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -67,20 +68,19 @@
                 </div>
 
                 <div class="container my-4">
-                    <hr class="mb-5"/>
                     <!--Carousel Wrapper-->
                     <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
                         <!--Controls-->
-                        <div class="controls-top">
+                        <div class="controls-top" style="text-align:center">
                             <a class="btn-floating" href="#multi-item-example" onclick="slide('left')" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
                             <a class="btn-floating" href="#multi-item-example" onclick="slide('right')" data-slide="next"><i class="fa fa-chevron-right"></i></a>
                         </div>
                         <!--/.Controls-->
                         <!--Indicators-->
                         <ol class="carousel-indicators">
-                            <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                            <li data-target="#multi-item-example" data-slide-to="1"></li>
-                            <li data-target="#multi-item-example" data-slide-to="2"></li>
+                            <li id="boule-1" data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+                            <li id="boule-2" data-target="#multi-item-example" data-slide-to="1"></li>
+                            <li id="boule-3" data-target="#multi-item-example" data-slide-to="2"></li>
                         </ol>
                         <!--/.Indicators-->
                     
@@ -96,10 +96,9 @@
                                     <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car1.png"
                                         alt="Card image cap">
                                         <div class="card-body">
-                                        <h4 class="card-title">Card 1</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.</p>
-                                        <a class="btn btn-primary">Button</a>
+                                        <h4 class="card-title">Audi e-Tron GT</h4>
+                                        <p class="card-text">Un modèle fascinant aux finitions exceptionnelles. L'électrique de demain est déjà présent dans ce bijou de technologie</p><br>
+                                        <a class="btn btn-primary">Réserver</a>
                                     </div>
                                 </div>
                             </div>
@@ -108,10 +107,9 @@
                                 <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car2.png"
                                     alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
+                                    <h4 class="card-title">Volkswagen Golf 7</h4>
+                                    <p class="card-text">Une puissance à vous donner la chair de poule. La Golf 7 de Volkswagen est une voiture complète qui vous fera aimer la conduite sportive</p><br>
+                                    <a class="btn btn-primary">Réserver</a>
                                 </div>
                                 </div>
                             </div>
@@ -121,10 +119,9 @@
                                 <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car3.png"
                                     alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
+                                    <h4 class="card-title">Ford Mustang</h4>
+                                    <p class="card-text">Le modèle inconique de Ford Mustang délivre du pur plaisir à chaque trajet et se distinguent par leur design aérodynamique et leur style agressif</p><br>
+                                    <a class="btn btn-primary">Réserver</a>
                                 </div>
                                 </div>
                             </div>
@@ -142,10 +139,9 @@
                                 <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car4.png"
                                     alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title">Card 2</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
+                                    <h4 class="card-title">BMW M4</h4>
+                                    <p class="card-text">Les BMW Série 4 Coupé M offrent une combinaison fascinante d'esthétique, de caractère et de sportivité typique de la ligne M</p><br>
+                                    <a class="btn btn-primary">Réserver</a>
                                 </div>
                                 </div>
                             </div>
@@ -155,10 +151,9 @@
                                 <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car5.png"
                                     alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
+                                    <h4 class="card-title">Mercedes-AMG GT</h4>
+                                    <p class="card-text">Le Mercedes-AMG GT est un spectaculaire modèle Grand Tourisme animé par un moteur V8 biturbo AMG de 4,0 litres</p><br>
+                                    <a class="btn btn-primary">Réserver</a>
                                 </div>
                                 </div>
                             </div>
@@ -168,10 +163,9 @@
                                 <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car6.png"
                                     alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
+                                    <h4 class="card-title">Tesla Model S</h4>
+                                    <p class="card-text">La Tesla Model S est conçue pour la vitesse et l'autonomie, avec une accélération démesurée, des performances époustouflantes et un design élégant.</p><br>
+                                    <a class="btn btn-primary">Réserver</a>
                                 </div>
                                 </div>
                             </div>
@@ -188,10 +182,9 @@
                                 <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car7.png"
                                     alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title">Card 3</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
+                                    <h4 class="card-title">Peugeot 208</h4>
+                                    <p class="card-text">Découvrez la Peugeot 208 : la citadine au design sportif. Parfaite pour vos déplacements citadins, cette voiture est d'une beauté inégalée</p><br>
+                                    <a class="btn btn-primary">Réserver</a>
                                 </div>
                                 </div>
                             </div>
@@ -201,10 +194,9 @@
                                 <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car8.png"
                                     alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
+                                    <h4 class="card-title">Clio III</h4>
+                                    <p class="card-text">La Clio 3 est parfaite pour vos déplacements en ville. Cette dernière vous offrera confort et vitesse malgré le compteur bloqué à 170km/h</p><br>
+                                    <a class="btn btn-primary">Réserver</a>
                                 </div>
                                 </div>
                             </div>
@@ -214,21 +206,19 @@
                                 <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car9.png"
                                     alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                                    card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
+                                    <h4 class="card-title">Lamborghini Aventador</h4>
+                                    <p class="card-text">L’Aventador a été conçue pour aller au-delà du concept de performance, faisant d’emblée figure de référence dans le domaine des supersportives</p><br>
+                                    <a class="btn btn-primary">Réserver</a>
                                 </div>
                                 </div>
                             </div>
                             </div>
-                    
+                            
                         </div>
                         <!--/.Third slide-->
                     
                         </div>
                         <!--/.Slides-->
-                    
                     </div>
                     <!--/.Carousel Wrapper-->
                 </div>
