@@ -15,7 +15,7 @@ services:
         volumes:
             - pg-data-bdd:/var/log/postgresql
             - pg-data-bdd:/var/lib/postgresql/data
-            - ./IntelliCar.sql:/docker-entrypoint-initdb.d/IntelliCar.sql
+            - ./intelliCar.sql:/docker-entrypoint-initdb.d/intelliCar.sql
         ports:
             - 5432:5432
         environment:
@@ -29,7 +29,7 @@ services:
         environment:
             PGADMIN_DEFAULT_EMAIL: user@domain.com
             PGADMIN_DEFAULT_PASSWORD: root
-            PG_DATABASE: IntelliCar
+            PG_DATABASE: intelliCar
             PG_USER: postgres
             PG_PASSWORD: root
         volumes:
