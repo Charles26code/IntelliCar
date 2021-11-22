@@ -6,7 +6,7 @@ class Conf {
     'hostname' => 'db_lesson',
     'database' => 'IntelliCar',
     'login' => 'postgres',
-    'password' => 'changeme',
+    'password' => 'root',
     'port' => 5432
   );
    
