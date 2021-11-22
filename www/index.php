@@ -202,20 +202,18 @@
                     
                             <div class="col-md-4 clearfix d-none d-md-block">
                                 <div class="card mb-2">
-                                <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car9.png"
+                                    <img id="forced-card-img-top" class="card-img-top" src="assets/img/Modeles/car9.png"
                                     alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Lamborghini Aventador</h4>
-                                    <p class="card-text">L’Aventador a été conçue pour aller au-delà du concept de performance, faisant d’emblée figure de référence dans le domaine des supersportives</p><br>
-                                    <a class="btn btn-primary">Réserver</a>
-                                </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title">Lamborghini Aventador</h4>
+                                        <p class="card-text">L’Aventador a été conçue pour aller au-delà du concept de performance, faisant d’emblée figure de référence dans le domaine des supersportives</p><br>
+                                        <a class="btn btn-primary">Réserver</a>
+                                    </div>
                                 </div>
                             </div>
-                            </div>
-                            
                         </div>
+                    </div>
                         <!--/.Third slide-->
-                    
                         </div>
                         <!--/.Slides-->
                     </div>
@@ -238,6 +236,39 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xl-7">
                         <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <h1 style="font-family:var(--bs-body-font-family);">Informations personnelles :</h1><br>
+                            <!-- Nom, prénom adresse tel mail-->
+                            <!-- Prénom input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="text" placeholder="Jean" data-sb-validations="required" />
+                                <label for="name">Prénom</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">Prénom requis.</div>
+                            </div>
+                            <!-- Nom input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="text" placeholder="Pierre" data-sb-validations="required" />
+                                <label for="name">Nom</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">Nom requis.</div>
+                            </div>
+                            <!-- Adresse input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="text" placeholder="2 rue de l'artichau" data-sb-validations="required" />
+                                <label for="name">Adresse</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">Adresse requise.</div>
+                            </div>
+                            <!-- Téléphone input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="tel" placeholder="0665981546" data-sb-validations="required" />
+                                <label for="name">Téléphone</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">Numéro de téléphone requis.</div>
+                            </div>
+                            <!-- Mail input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="email" placeholder="pierre@exemple.com" data-sb-validations="required" />
+                                <label for="name">Adresse Mail</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">Adresse Mail requise.</div><br>
+                            </div>
+                            <h1 style="font-family:var(--bs-body-font-family);">Informations du véhicule :</h1><br>
                             <!-- Marque input-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="name" type="text" placeholder="Peugeot" data-sb-validations="required" />
