@@ -240,9 +240,9 @@
                             <!-- Nom, prénom adresse tel mail-->
                             <!-- Prénom input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Jean" data-sb-validations="required" />
+                                <input class="form-control" id="nickname" type="text" placeholder="Jean" data-sb-validations="required" />
                                 <label for="name">Prénom</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">Prénom requis.</div>
+                                <div class="invalid-feedback" data-sb-feedback="nickname:required">Prénom requis.</div>
                             </div>
                             <!-- Nom input-->
                             <div class="form-floating mb-3">
@@ -252,28 +252,28 @@
                             </div>
                             <!-- Adresse input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="2 rue de l'artichau" data-sb-validations="required" />
+                                <input class="form-control" id="adress" type="text" placeholder="2 rue de l'artichau" data-sb-validations="required" />
                                 <label for="name">Adresse</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">Adresse requise.</div>
+                                <div class="invalid-feedback" data-sb-feedback="adress:required">Adresse requise.</div>
                             </div>
                             <!-- Téléphone input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="tel" placeholder="0665981546" data-sb-validations="required" />
+                                <input class="form-control" id="num" type="tel" placeholder="0665981546" data-sb-validations="required" />
                                 <label for="name">Téléphone</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">Numéro de téléphone requis.</div>
+                                <div class="invalid-feedback" data-sb-feedback="num:required">Numéro de téléphone requis.</div>
                             </div>
                             <!-- Mail input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="email" placeholder="pierre@exemple.com" data-sb-validations="required" />
+                                <input class="form-control" id="email" type="email" placeholder="pierre@exemple.com" data-sb-validations="required" />
                                 <label for="name">Adresse Mail</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">Adresse Mail requise.</div><br>
+                                <div class="invalid-feedback" data-sb-feedback="email:required">Adresse Mail requise.</div><br>
                             </div>
                             <h1 style="font-family:var(--bs-body-font-family);">Informations du véhicule :</h1><br>
                             <!-- Marque input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Peugeot" data-sb-validations="required" />
+                                <input class="form-control" id="marque" type="text" placeholder="Peugeot" data-sb-validations="required" />
                                 <label for="name">Marque du véhicule</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">Marque requise.</div>
+                                <div class="invalid-feedback" data-sb-feedback="marque:required">Marque requise.</div>
                             </div>
                             <!-- Modele input-->
                             <div class="form-floating mb-3">
@@ -300,14 +300,14 @@
                             <hr class="mt-5">
                             <h1 style="font-family:var(--bs-body-font-family);">Echelle de prix :</h1>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="pricemin" type="pricemin" placeholder="2000€" data-sb-validations="required" />
+                                <input class="form-control" id="pricemin" type="number" placeholder="2000€" data-sb-validations="required" />
                                 <label for="phone">Prix minimum</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">Prix minimal requis.</div>
+                                <div class="invalid-feedback" data-sb-feedback="pricemin:required">Prix minimal requis.</div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="princemax" type="princemax" required placeholder="55000€" data-sb-validations="required" />
+                                <input class="form-control" id="princemax" type="number" required placeholder="55000€" data-sb-validations="required" />
                                 <label for="phone">Prix maximum</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">Prix maximal requis.</div>
+                                <div class="invalid-feedback" data-sb-feedback="princemax:required">Prix maximal requis.</div>
                             </div>
                             <!-- Motor input-->
                             <h1 style="font-family:var(--bs-body-font-family);">Motorisation :</h1>
